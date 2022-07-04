@@ -25,7 +25,8 @@ backend:
 integrations:
   github:
   - host: github.com
-    token: ${GITHUB_TOKEN}
+    apps:
+    - $include: github-credentials.yaml
 proxy:
   '/test':
     target: 'https://example.com'
