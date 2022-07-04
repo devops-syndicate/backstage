@@ -27,10 +27,6 @@ integrations:
   - host: github.com
     apps:
     - $include: github-credentials.yaml
-proxy:
-  '/test':
-    target: 'https://example.com'
-    changeOrigin: true
 techdocs:
   builder: 'local'
   generator:
@@ -45,20 +41,16 @@ auth:
         clientId: ${GITHUB_AUTH_CLIENT_ID}
         clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
 scaffolder:
+  defaultAuthor:
+    name: Backstage System
+    email: backstage@example.com
+  defaultCommitMessage: "New app created"
 catalog:
   import:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-  - allow: [Component, System, API, Resource, Location]
+  - allow: [Component, System, API, Resource, Location, Template]
   locations:
-  - type: file
-    target: ../../examples/entities.yaml
-  - type: file
-    target: ../../examples/template/template.yaml
-    rules:
-      - allow: [Template]
-  - type: file
-    target: ../../examples/org.yaml
-    rules:
-    - allow: [User, Group]
+  - type: github-discovery
+    target: https://github.com/devops-syndicate
