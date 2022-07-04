@@ -2,11 +2,9 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: backstage
-  description: An example of a Backstage application.
-  # Example for optional annotations
-  # annotations:
-  #   github.com/project-slug: backstage/backstage
-  #   backstage.io/techdocs-ref: dir:.
+  description: The backstage app for devops-syndicate
+  annotations:
+    github.com/project-slug: devops-syndicate/backstage
 spec:
   type: website
   owner: john@example.com

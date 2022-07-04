@@ -42,8 +42,8 @@ auth:
         clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
 scaffolder:
   defaultAuthor:
-    name: Backstage System
-    email: backstage@example.com
+    name: Backstage App Creator
+    email: backstage@devops-syndicate.github.com
   defaultCommitMessage: "New app created"
 catalog:
   import:
