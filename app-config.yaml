@@ -37,7 +37,12 @@ techdocs:
   publisher:
     type: 'local'
 auth:
-  providers: {}
+  environment: development
+  providers:
+    github:
+      development:
+        clientId: ${GITHUB_AUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
 scaffolder:
 catalog:
   import:
