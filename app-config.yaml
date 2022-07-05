@@ -41,6 +41,13 @@ auth:
       development:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+proxy:
+  '/argocd/api':
+    target: http://argo-cd.127.0.0.1.nip.io/api/v1/
+    changeOrigin: true
+    secure: false
+    headers:
+      Cookie: argocd.token=${ARGOCD_AUTH_TOKEN}
 scaffolder:
   defaultAuthor:
     name: Backstage App Creator
