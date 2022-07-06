@@ -5,3 +5,9 @@ backend:
   listen:
     port: 7007
     host: 0.0.0.0
+integrations:
+  github:
+  - host: github.com
+    token: ${GITHUB_TOKEN} # Needed to access github for creating new app
+    apps:
+    - $include: /tmp/backstage/github-credentials.yaml
