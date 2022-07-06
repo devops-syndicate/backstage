@@ -1,1 +1,13 @@
-# Backstage override configuration for your local development environment
+integrations:
+  github:
+  - host: github.com
+    token: ${GITHUB_TOKEN} # Needed to access github for creating new app
+    apps:
+    - $include: github-credentials.yaml
+proxy:
+  '/argocd/api':
+    target: https://argo-cd.127.0.0.1.nip.io/api/v1/
+    changeOrigin: true
+    secure: false
+    headers:
+      Cookie: argocd.token=${ARGOCD_AUTH_TOKEN}

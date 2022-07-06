@@ -22,12 +22,6 @@ backend:
       password: ${POSTGRES_PASSWORD}
   cache:
     store: memory
-integrations:
-  github:
-  - host: github.com
-    token: ${GITHUB_TOKEN} # Needed to access github for creating new app
-    apps:
-    - $include: github-credentials.yaml
 techdocs:
   builder: 'local'
   generator:
@@ -41,13 +35,6 @@ auth:
       development:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
-proxy:
-  '/argocd/api':
-    target: http://argo-cd.127.0.0.1.nip.io/api/v1/
-    changeOrigin: true
-    secure: false
-    headers:
-      Cookie: argocd.token=${ARGOCD_AUTH_TOKEN}
 scaffolder:
   defaultAuthor:
     name: Backstage App Creator
@@ -58,7 +45,11 @@ catalog:
     entityFilename: catalog-info.yaml
     pullRequestBranchName: backstage-integration
   rules:
-  - allow: [Component, System, API, Resource, Location, Template]
+  - allow: [Component, System, API, Resource, Location]
   locations:
   - type: github-discovery
     target: https://github.com/devops-syndicate
+  - type: url
+    target: https://github.com/devops-syndicate/backstage-templates/blob/main/nodejs-template/template.yaml
+    rules:
+    - allow: [Template]

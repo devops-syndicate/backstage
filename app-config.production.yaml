@@ -1,10 +1,19 @@
 app:
-  baseUrl: http://backstage.127.0.0.1.nip.io
+  baseUrl: https://backstage.127.0.0.1.nip.io
 backend:
-  baseUrl: http://backstage.127.0.0.1.nip.io
+  baseUrl: https://backstage.127.0.0.1.nip.io
   listen:
     port: 7007
     host: 0.0.0.0
+  cors:
+    origin: https://backstage.127.0.0.1.nip.io
+proxy:
+  '/argocd/api':
+    target: http://argocd-server.argocd/api/v1/
+    changeOrigin: true
+    secure: false
+    headers:
+      Cookie: argocd.token=${ARGOCD_AUTH_TOKEN}
 integrations:
   github:
   - host: github.com
