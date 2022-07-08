@@ -1,7 +1,6 @@
 integrations:
   github:
   - host: github.com
-    token: ${GITHUB_TOKEN} # Needed to access github for creating new app
     apps:
     - $include: github-credentials.yaml
 proxy:
