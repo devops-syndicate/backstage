@@ -50,6 +50,6 @@ catalog:
   - type: github-discovery
     target: https://github.com/devops-syndicate
   - type: url
-    target: https://github.com/devops-syndicate/backstage-templates/blob/main/nodejs-template/template.yaml
+    target: https://github.com/devops-syndicate/backstage-templates/blob/main/catalog-info.yaml
     rules:
-    - allow: [Template]
+    - allow: [Template, Location]
