@@ -2,7 +2,7 @@ import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
 import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
-import { GithubDiscoveryProcessor, GithubOrgReaderProcessor } from '@backstage/plugin-catalog-backend-module-github';
+import { GithubDiscoveryProcessor, GitHubOrgEntityProvider } from '@backstage/plugin-catalog-backend-module-github';
 import { ScmIntegrations, DefaultGithubCredentialsProvider } from '@backstage/integration';
 
 export default async function createPlugin(
@@ -15,13 +15,20 @@ export default async function createPlugin(
     GithubDiscoveryProcessor.fromConfig(env.config, {
       logger: env.logger,
       githubCredentialsProvider,
-    }),
-    GithubOrgReaderProcessor.fromConfig(env.config, {
-      logger: env.logger,
-      githubCredentialsProvider,
-    }),
+    })
   );
   builder.addProcessor(new ScaffolderEntitiesProcessor());
+  builder.addEntityProvider(
+    GitHubOrgEntityProvider.fromConfig(env.config, {
+      id: 'development',
+      orgUrl: 'https://github.com/devops-syndicate',
+      logger: env.logger,
+      schedule: env.scheduler.createScheduledTaskRunner({
+        frequency: { minutes: 60 },
+        timeout: { minutes: 15 },
+      }),
+    }),
+  );
   const { processingEngine, router } = await builder.build();
   await processingEngine.start();
   return router;
