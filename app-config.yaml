@@ -3,6 +3,7 @@ app:
   baseUrl: http://localhost:3000
 organization:
   name: DevOps Syndicate
+  githubOrg: devops-syndicate
 backend:
   baseUrl: http://localhost:7007
   listen:

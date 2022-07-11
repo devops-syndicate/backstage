@@ -21,7 +21,7 @@ export default async function createPlugin(
   builder.addEntityProvider(
     GitHubOrgEntityProvider.fromConfig(env.config, {
       id: 'development',
-      orgUrl: 'https://github.com/devops-syndicate',
+      orgUrl: `https://github.com/${env.config.getString('organization.githubOrg')}`,
       logger: env.logger,
       schedule: env.scheduler.createScheduledTaskRunner({
         frequency: { minutes: 60 },
