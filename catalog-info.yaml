@@ -6,6 +6,6 @@ metadata:
   annotations:
     github.com/project-slug: devops-syndicate/backstage
 spec:
-  type: website
-  owner: john@example.com
+  type: service
+  owner: admins
   lifecycle: experimental
