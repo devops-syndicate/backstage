@@ -3,10 +3,3 @@ integrations:
   - host: github.com
     apps:
     - $include: github-credentials.yaml
-proxy:
-  '/argocd/api':
-    target: https://argo-cd.127.0.0.1.nip.io/api/v1/
-    changeOrigin: true
-    secure: false
-    headers:
-      Cookie: argocd.token=${ARGOCD_AUTH_TOKEN}

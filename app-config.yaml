@@ -29,6 +29,13 @@ techdocs:
     runIn: 'docker'
   publisher:
     type: 'local'
+proxy:
+  '/argocd/api':
+    target: https://${ARGOCD_SERVER}/api/v1/
+    changeOrigin: true
+    secure: false
+    headers:
+      Cookie: argocd.token=${ARGOCD_AUTH_TOKEN}
 auth:
   environment: development
   providers:
