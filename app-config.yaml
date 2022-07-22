@@ -31,7 +31,7 @@ techdocs:
     type: 'local'
 proxy:
   '/argocd/api':
-    target: https://${ARGOCD_SERVER}/api/v1/
+    target: ${ARGOCD_SERVER}/api/v1/
     changeOrigin: true
     secure: false
     headers:
