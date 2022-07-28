@@ -57,6 +57,10 @@ catalog:
   locations:
   - type: github-discovery
     target: https://github.com/devops-syndicate
+  - type: github-discovery
+    target: https://github.com/devops-syndicate/*/blob/main/api/api.yaml
+    rules:
+    - allow: [API]
   - type: url
     target: https://github.com/devops-syndicate/backstage-templates/blob/main/catalog-info.yaml
     rules:
