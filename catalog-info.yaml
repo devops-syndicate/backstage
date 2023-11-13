@@ -5,6 +5,8 @@ metadata:
   description: The backstage app for devops-syndicate
   annotations:
     github.com/project-slug: devops-syndicate/backstage
+  tags:
+  - nodejs
 spec:
   type: service
   owner: admins
