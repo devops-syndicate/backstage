@@ -1,3 +1,7 @@
+backend:
+  database:
+    client: better-sqlite3
+    connection: ':memory:'
 integrations:
   github:
   - host: github.com
